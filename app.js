@@ -9,9 +9,9 @@ var express = require("express"),
     methodOverride = require("method-override"),
     flash = require("connect-flash"),
     moment = require("moment"),
-    MemoryStore = require('memorystore')(expressSession)
 
-var app = express();
+
+    var app = express();
 var seedDB = require("./seed");
 
 mongoose.connect("mongodb+srv://saalik123:saalik@123@cluster0.9plmk.mongodb.net/saalik123?retryWrites=true&w=majority", {
@@ -37,14 +37,9 @@ app.locals.moment = moment;
 
 // >>>>>>>>>>>>>>> PASSPORT SETUP <<<<<<<<<<<<<<<<<<<<<
 
-app.set('trust proxy', 1);
+
 
 app.use(expressSession({
-    cookie: {
-        secure: true,
-        maxAge: 60000
-    },
-    store: new MemoryStore(),
     secret: "Everyone should learn to code.",
     resave: false,
     saveUninitialized: true
