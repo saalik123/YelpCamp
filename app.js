@@ -39,8 +39,15 @@ app.locals.moment = moment;
 app.use(expressSession({
     secret: "Everyone should learn to code.",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: true
 }));
+
+app.use(function(req, res, next) {
+    if (!req.session) {
+        return next(new Error('Oh no')) //handle error
+    }
+    next() //otherwise continue
+});
 
 app.use(passport.initialize());
 app.use(passport.session());
