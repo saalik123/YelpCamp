@@ -36,7 +36,13 @@ app.locals.moment = moment;
 
 // >>>>>>>>>>>>>>> PASSPORT SETUP <<<<<<<<<<<<<<<<<<<<<
 
+app.set('trust proxy', 1);
+
 app.use(expressSession({
+    cookie: {
+        secure: true,
+        maxAge: 60000
+    },
     secret: "Everyone should learn to code.",
     resave: false,
     saveUninitialized: true
