@@ -8,7 +8,8 @@ var express = require("express"),
     expressSession = require("express-session"),
     methodOverride = require("method-override"),
     flash = require("connect-flash"),
-    moment = require("moment");
+    moment = require("moment"),
+    MemoryStore = require('memorystore')(expressSession)
 
 var app = express();
 var seedDB = require("./seed");
@@ -43,6 +44,7 @@ app.use(expressSession({
         secure: true,
         maxAge: 60000
     },
+    store: new MemoryStore(),
     secret: "Everyone should learn to code.",
     resave: false,
     saveUninitialized: true
