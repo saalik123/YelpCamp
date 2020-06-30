@@ -99,5 +99,5 @@ function isLoggedIn(req, res, next) {
 }
 
 app.listen(port, function() {
-    console.log("STARTING SERVER AT PORT 3000.....!")
+    console.log(`STARTING SERVER AT PORT ${port}.....!`)
 })
