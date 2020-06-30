@@ -11,10 +11,12 @@ var express = require("express"),
     moment = require("moment"),
     MemoryStore = require('memorystore')(expressSession);
 
+var port = process.env.PORT || 3000;
+
 var app = express();
 var seedDB = require("./seed");
 
-mongoose.connect("mongodb+srv://saalik123:saalik@123@cluster0.9plmk.mongodb.net/saalik123?retryWrites=true&w=majority", {
+mongoose.connect("mongodb://localhost/yelp_camp", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -96,6 +98,6 @@ function isLoggedIn(req, res, next) {
     }
 }
 
-app.listen(process.env.PORT, function() {
+app.listen(port, function() {
     console.log("STARTING SERVER AT PORT 3000.....!")
 })
